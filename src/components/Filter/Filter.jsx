@@ -1,5 +1,18 @@
 import style from './Filter.module.css';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'reduxTodo/filterSlice';
 
 export const Filter = () => {
-  return <input className={style.input} placeholder="Find it" name="filter" />;
+  const dispatch = useDispatch();
+  const handleChange = e => {
+    dispatch(setFilter(e.target.value));
+  };
+  return (
+    <input
+      onChange={handleChange}
+      className={style.input}
+      placeholder="Find it"
+      name="filter"
+    />
+  );
 };

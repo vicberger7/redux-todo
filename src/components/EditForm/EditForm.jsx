@@ -1,9 +1,13 @@
 import { RiSaveLine } from 'react-icons/ri';
 import { MdOutlineCancel } from 'react-icons/md';
+import { setCurrentTodo } from 'reduxTodo/todoSlice';
 
 import style from './EditForm.module.css';
+import { useDispatch } from 'react-redux';
 
 export const EditForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <form className={style.form}>
       <input
@@ -18,7 +22,11 @@ export const EditForm = () => {
         <RiSaveLine color="green" size="16px" />
       </button>
 
-      <button className={style.editButton} type="button">
+      <button
+        className={style.editButton}
+        type="button"
+        onClick={() => dispatch(setCurrentTodo(null))}
+      >
         <MdOutlineCancel color="red" size="16px" />
       </button>
     </form>

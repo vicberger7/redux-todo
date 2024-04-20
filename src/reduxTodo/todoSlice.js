@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
+  currentTodo: null,
 };
 
 const todoSlice = createSlice({
@@ -14,7 +15,10 @@ const todoSlice = createSlice({
     deleteTodo: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
     },
+    setCurrentTodo: (state, action) => {
+      state.currentTodo = action.payload;
+    },
   },
 });
 export default todoSlice.reducer;
-export const { addTodo, deleteTodo } = todoSlice.actions;
+export const { addTodo, deleteTodo, setCurrentTodo } = todoSlice.actions;
